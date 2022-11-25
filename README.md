@@ -329,7 +329,7 @@ crontab -e
 
 ```
 
-## 3. cloudflare Domain Name API Settings<br>
+## 3. Cloudflare Domain Name API Settings<br>
 First, you need to have a cloudfare account and a domain name, then log in and jump to https://dash.cloudflare.com/profile/api-tokens set the API. See the following figure for specific settings. We only need the Token and Zone_ID.
 
 ![1](https://github.com/moran666666/aptos-node-operation-tutorial/raw/main/creat_token_1.jpg)
