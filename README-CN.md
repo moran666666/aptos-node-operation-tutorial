@@ -328,7 +328,7 @@ crontab -e
 
 ```
 
-## 3. cloudflare域名API设置<br>
+## 3. Cloudflare域名API设置<br>
 首先，自己要有cloudfare账号且存在域名,然后登陆跳转到 https://dash.cloudflare.com/profile/api-tokens 设置API,具体设置见下面图示,我们仅需要API的Token,Zone_ID这2个信息.
 
 ![1](https://github.com/moran666666/aptos-node-operation-tutorial/raw/main/creat_token_1.jpg)
