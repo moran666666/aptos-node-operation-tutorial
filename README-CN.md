@@ -117,11 +117,11 @@ sudo sed -i '$a\  port: 19101' $NODE_CFG_DIR/fullnode.yaml
 ## 8. 运行节点
 ```shell
 # validator
-tmux new-window -t aptos -n node
+tmux new -s aptos -d -n node
 tmux send-keys -t aptos:node "aptos-node -f $NODE_CFG_DIR/validator.yaml 2>&1 | tee ~/validator.log " C-m
 
 # full node
-tmux new-window -t aptos -n node
+tmux new -s aptos -d -n node
 tmux send-keys -t aptos:node "aptos-node -f $NODE_CFG_DIR/fullnode.yaml 2>&1 | tee ~/fullnode.log " C-m
 ```
 到目前为止,节点可以运行了,但还无法同步区块数，因为还没在验证者节点集中(详情看步骤11). 同时为了安全，还需要运行haproxy作为代理
