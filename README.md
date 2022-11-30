@@ -117,11 +117,11 @@ sudo sed -i '$a\  port: 19101' $NODE_CFG_DIR/fullnode.yaml
 ## 8. Start Running Node
 ```shell
 # validator
-tmux new-window -t aptos -n node
+tmux new -s aptos -d -n node
 tmux send-keys -t aptos:node "aptos-node -f $NODE_CFG_DIR/validator.yaml 2>&1 | tee ~/validator.log " C-m
 
 # full node
-tmux new-window -t aptos -n node
+tmux new -s aptos -d -n node
 tmux send-keys -t aptos:node "aptos-node -f $NODE_CFG_DIR/fullnode.yaml 2>&1 | tee ~/fullnode.log " C-m
 ```
 So far, the node can run, but the number of blocks cannot be synchronized because it is not in the validator node set (see step 11 for details). At the same time, for security, you need to run haproxy as a proxy
