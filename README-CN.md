@@ -268,7 +268,7 @@ fi
 # 判断验证节点机器是否存活，存活则余下的脚本不再执行直接退出脚本
 while true
 do
-    active_count=$(ping validator_ip -c 1 | grep "ttl" | grep "time" | wc -l)
+    active_count=$(ping validator_ip -c 1 | grep "ttl" | wc -l)
     if [[ $active_count -ge 1 ]];then
         exit
     fi
@@ -294,8 +294,8 @@ do
     tmux send-keys -t aptos:node 'C-c' C-m
     sudo pkill -9 aptos-node
     sleep 3
-    process_count=$(ps -aux | grep -v color=auto | grep aptos-node | wc -l)
-    if [[ $process_count -eq 0 ]];then
+    process_count=$(ps -aux | grep aptos-node | wc -l)
+    if [[ $process_count -eq 1 ]];then
         break
     fi
 done
@@ -312,8 +312,8 @@ while true
 do
     tmux send-keys -t aptos:node "aptos-node -f $NODE_CFG_DIR/validator.yaml 2>&1 | tee ~/validator.log " C-m
     sleep 30
-    process_count=$(ps -aux | grep -v color=auto | grep aptos-node | wc -l)
-    if [[ $process_count -eq 1 ]];then
+    process_count=$(ps -aux | grep aptos-node | wc -l)
+    if [[ $process_count -gt 1 ]];then
         break
     fi
 done
