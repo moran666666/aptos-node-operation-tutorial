@@ -294,8 +294,8 @@ do
     tmux send-keys -t aptos:node 'C-c' C-m
     sudo pkill -9 aptos-node
     sleep 3
-    process_info=$(ps -aux | grep -v color=auto | grep aptos-node)
-    if [[ -z "$process_info" ]];then
+    process_count=$(ps -aux | grep -v color=auto | grep aptos-node | wc -l)
+    if [[ $process_count -eq 0 ]];then
         break
     fi
 done
@@ -312,8 +312,8 @@ while true
 do
     tmux send-keys -t aptos:node "aptos-node -f $NODE_CFG_DIR/validator.yaml 2>&1 | tee ~/validator.log " C-m
     sleep 30
-    process_info=$(ps -aux | grep -v color=auto | grep aptos-node)
-    if [[ $process_info ]];then
+    process_count=$(ps -aux | grep -v color=auto | grep aptos-node | wc -l)
+    if [[ $process_count -eq 1 ]];then
         break
     fi
 done
